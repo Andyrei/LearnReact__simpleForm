@@ -29,7 +29,7 @@ const isUsernameValid  = (username)=>{
 
 function FormAdvanced() {
 
-/*   const {
+  const {
     value: enteredUsername,
     isValid: enteredUsernameIsValid,
     hasError: enteredUsernameHasError,
@@ -37,7 +37,7 @@ function FormAdvanced() {
     inputBlurHandler: usernameBlurHandler,
     inputTouchedHandler: usernameTouchedHandler,
     reset: resetUsernameInput
-  } = useInput((value)=>isUsernameValid(value.trim())); */
+  } = useInput((value)=>isUsernameValid(value.trim()));
 
   const {
     value: enteredName,
@@ -72,17 +72,17 @@ function FormAdvanced() {
   const formHandler = (e) =>{
     e.preventDefault();
 
-/*     usernameTouchedHandler(true); */
+    usernameTouchedHandler(true);
     mailTouchedHandler(true);
 
-/*     if (!enteredUsernameIsValid || !enteredMailIsValid) {
+    if (!enteredUsernameIsValid || !enteredMailIsValid) {
       return;
     }
 
     console.log(`Username: ${enteredUsername}\nMail: ${enteredMail}`);
-     */
+    
     resetMailInput();
-/*     resetUsernameInput() */
+    resetUsernameInput()
   }
 
   const usernameInputClasses = "input-item"
@@ -93,22 +93,22 @@ function FormAdvanced() {
   return (
     <div className="form_container">
       <form onSubmit={formHandler}>
-        <div className="grid sm:grid-col-1 xl:grid-cols-2">
-        {/* <div className={usernameInputClasses}>
+        <div className="grid sm:grid-col-1 xl:grid-cols-2 gap-10">
+        <div className={usernameInputClasses}>
             <input type="text" placeholder='username' id='username'
                 onChange={()=>{this.bind.usernameChangeHandler(this, `${<span>Works</span>}`)}}
                 onBlur={usernameBlurHandler}
                 value={enteredUsername}
                 />
             <label htmlFor="username" className={enteredUsername != ''?"active-label": undefined}>Username <span>(containing at list 8 chars and not more than 20 chars)</span></label>
-          </div> */}
+          </div>
 
           
-          <InputComponent
+{/*           <InputComponent
               divInputClass={usernameInputClasses}
               type={'text'}
               inputValue={'username'}
-              />
+              /> */}
 
 
           <div className={nameInputClasses}>

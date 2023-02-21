@@ -41,7 +41,7 @@
   .input-item input:focus-visible + label,
   .input-item input:focus-within + label,
   .input-item input + .active-label{
-    top: 15%;
+    top: -30%;
     left: 0;
     color: rgb(222, 221, 212);
     font-size: 1.3rem;
@@ -73,6 +73,7 @@
   }
   .btn{
     padding: 1rem;
+    margin-block: 2rem;
   }
   .input-item:has(.btn){
     margin: 0 auto;
@@ -88,13 +89,4 @@
     margin-top: 2rem;
     color: #f64b4b;
     text-align: left;
-  }
-  
-  .row{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  
-  .row col{
-    flex: 2 1 auto;
   }
