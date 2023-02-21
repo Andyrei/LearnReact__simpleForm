@@ -1,0 +1,106 @@
+#root {
+  width: 1280px;
+  margin: 0 auto;
+  text-align: center;
+}
+.form_container{
+  width: 60%;
+  margin: 0 auto;
+}
+
+.input-item {
+  position: relative;
+  width: 100%;
+}
+.input-item *{
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+.input-item label{
+  width: auto;
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translate(0, -50%);
+  font-weight: bold;
+  font-size: .9rem;
+  color: rgba(130, 129, 120, 1);
+  transition: all .3s;
+}
+.input-item label span{
+  display: inline;
+  visibility: hidden;
+  opacity: 0;
+  font-size: .7rem;
+  transition: opacity .3s ease;
+  transition-delay: .2s;
+}
+
+.input-item input:hover + label{
+    color: rgb(222, 221, 212);
+    font-size: 1.3rem;
+}
+
+.input-item input:focus + label,
+.input-item input:focus-visible + label,
+.input-item input:focus-within + label,
+.input-item input + .active-label{
+  top: -40%;
+  left: 0;
+  color: rgb(222, 221, 212);
+  font-size: 1.3rem;
+}
+/* info span in label */
+.input-item input:focus + label span,
+.input-item input:focus-visible + label span,
+.input-item input:focus-within + label span,
+.input-item input + .active-label span{
+  visibility: visible;
+  opacity: 1;
+}
+
+.input-item input{
+  padding-block: 1rem;
+  margin-block: 3rem;
+  padding-left: 1rem;
+  font-size: 1.3rem;
+  color: #82b8ee;
+}
+.input-item input::placeholder{
+  visibility: hidden;
+}
+
+.btn-100 {
+  width: 100%;
+  text-align: center;
+  font-weight: bolder;
+  font-size: 1.3rem;
+}
+.btn{
+  padding: 1rem;
+}
+.input-item:has(.btn){
+  margin: 0 auto;
+}
+
+.invalid input{
+  outline: 2px solid #f64b4b;
+}
+.invalid label{
+  color: #f64b4b !important;
+}
+.error-text{
+  margin-top: 2rem;
+  color: #f64b4b;
+  text-align: left;
+}
+
+.row{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row col{
+  flex: 2 1 auto;
+}
