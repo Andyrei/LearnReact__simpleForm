@@ -30,9 +30,9 @@ const isUsernameValid  = (username)=>{
 function FormAdvanced() {
 
   const {
-    value: enteredUsername,
-    isValid: enteredUsernameIsValid,
-    hasError: enteredUsernameHasError,
+    value: username,
+    isValid: usernameIsValid,
+    hasError: usernameHasError,
     valueChangedHandler: usernameChangeHandler,
     inputBlurHandler: usernameBlurHandler,
     inputTouchedHandler: usernameTouchedHandler,
@@ -40,9 +40,9 @@ function FormAdvanced() {
   } = useInput((value)=>isUsernameValid(value.trim()));
 
   const {
-    value: enteredName,
-    isValid: enteredNameIsValid,
-    hasError: enteredNameHasError,
+    value: name,
+    isValid: nameIsValid,
+    hasError: nameHasError,
     valueChangedHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
     inputTouchedHandler: nameTouchedHandler,
@@ -50,9 +50,9 @@ function FormAdvanced() {
   } = useInput((value)=>value.trim());
 
   const {
-    value: enteredSurname,
-    isValid: enteredSurnameIsValid,
-    hasError: enteredSurnameHasError,
+    value: surname,
+    isValid: surnameIsValid,
+    hasError: surnameHasError,
     valueChangedHandler: surnameChangeHandler,
     inputBlurHandler: surnameBlurHandler,
     inputTouchedHandler: surnameTouchedHandler,
@@ -60,9 +60,9 @@ function FormAdvanced() {
   } = useInput((value)=>value.trim());
 
   const {
-    value: enteredMail,
-    isValid: enteredMailIsValid,
-    hasError: enteredMailHasError,
+    value: mail,
+    isValid: mailIsValid,
+    hasError: mailHasError,
     valueChangedHandler: mailChangeHandler,
     inputBlurHandler: mailBlurHandler,
     inputTouchedHandler: mailTouchedHandler,
@@ -75,81 +75,52 @@ function FormAdvanced() {
     usernameTouchedHandler(true);
     mailTouchedHandler(true);
 
-    if (!enteredUsernameIsValid || !enteredMailIsValid) {
+    if (!usernameIsValid || !mailIsValid) {
       return;
     }
-
-    console.log(`Username: ${enteredUsername}\nMail: ${enteredMail}`);
     
     resetMailInput();
     resetUsernameInput()
   }
-
-  const usernameInputClasses = "input-item"
-  const mailInputClasses = enteredMailHasError ? "input-item invalid" : "input-item";
-  const nameInputClasses = enteredNameHasError ? "input-item invalid" : "input-item";
-  const surnameInputClasses = enteredSurnameHasError ? "input-item invalid" : "input-item";
+  const mailInputClasses = mailHasError ? "input-item invalid" : "input-item";
+  const nameInputClasses = nameHasError ? "input-item invalid" : "input-item";
+  const surnameInputClasses = surnameHasError ? "input-item invalid" : "input-item";
   
   return (
     <div className="form_container">
       <form onSubmit={formHandler}>
         <div className="grid sm:grid-col-1 xl:grid-cols-2 gap-10">
-        <div className={usernameInputClasses}>
-            <input type="text" placeholder='username' id='username'
-                onChange={()=>{this.bind.usernameChangeHandler(this, `${<span>Works</span>}`)}}
-                onBlur={usernameBlurHandler}
-                value={enteredUsername}
-                />
-            <label htmlFor="username" className={enteredUsername != ''?"active-label": undefined}>Username <span>(containing at list 8 chars and not more than 20 chars)</span></label>
-          </div>
 
-          
-{/*           <InputComponent
-              divInputClass={usernameInputClasses}
+          <InputComponent
               type={'text'}
-              inputValue={'username'}
-              /> */}
+              inputValue={username}
+              inputHasError={usernameHasError}
+              label={'Username'}
+            /> 
+          <InputComponent
+              type={'text'}
+              inputValue={mail}
+              inputHasError={mailHasError}
+              label={'Email'}
+            /> 
 
-
-          <div className={nameInputClasses}>
-            <input type="text" placeholder='name' id='name'
-                onChange={nameChangeHandler}
-                onBlur={nameBlurHandler}
-                value={enteredName}
-                />
-            <label htmlFor="username" className={enteredName != ''?"active-label": undefined}>Name</label>
-          </div>
-          <div className={surnameInputClasses}>
-            <input type="text" placeholder='surname' id='surname'
-                onChange={surnameChangeHandler}
-                onBlur={surnameBlurHandler}
-                value={enteredSurname}
-                />
-            <label htmlFor="username" className={enteredSurname != ''?"active-label": undefined}>Surname</label>
-          </div>
-          <div className={mailInputClasses}>
-            <input type="text" placeholder='mail' id='mail'
-                  onChange={mailChangeHandler}
-                  onBlur={mailBlurHandler}
-                  value={enteredMail}
-                  />
-            <label htmlFor="mail" className={enteredMail != ''?"active-label": undefined} >E-mail</label>
-          </div>
-          <div className={mailInputClasses}>
-            <input type="text" placeholder='mail' id='mail'
-                  onChange={mailChangeHandler}
-                  onBlur={mailBlurHandler}
-                  value={enteredMail}
-                  />
-            <label htmlFor="mail" className={enteredMail != ''?"active-label": undefined} >E-mail <span>(example: mario.rossi@mail.com)</span></label>
-          </div>
+          <InputComponent
+              type={'text'}
+              inputValue={surname}
+              inputHasError={surnameHasError}
+              label={'Surname'}
+            /> 
+          <InputComponent
+              type={'text'}
+              inputValue={name}
+              inputHasError={nameHasError}
+              label={'Name'}
+            /> 
         </div>
         
         <div className="input-item">
           <button className='btn btn-100'>Submit</button>
         </div>
-        {enteredMailHasError && (<p className='error-text'>Enter a valid mail.</p>)}
-        {/* {enteredUsernameHasError && (<p className='error-text'>Username must not be empty.</p>)} */}
 
       </form>
     </div>
